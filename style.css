@@ -1,0 +1,344 @@
+/* ==== VARIAVEIS DE CORES CYBERPUNK ==== */
+:root {
+    --cor-primaria: #00fff9;
+    --cor-secundaria: #ff00c8;
+    --cor-destaque: #ffd900;
+    --cor-fundo: #050508;
+    --cor-caixa: rgba(10, 12, 28, 0.9);
+    --cor-borda: rgba(0, 255, 249, 0.6);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', monospace;
+}
+
+body {
+    min-height: 100vh;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    position: relative;
+    overflow-x: hidden;
+    background: var(--cor-fundo);
+}
+
+/* ==== FUNDO ANIMADO FUTURISTA ==== */
+.fundo-cyber {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: 
+        linear-gradient(90deg, rgba(0,255,249,0.03) 1px, transparent 1px),
+        linear-gradient(rgba(0,255,249,0.03) 1px, transparent 1px),
+        linear-gradient(135deg, #050508 0%, #100a24 50%, #081018 100%);
+    background-size: 40px 40px, 40px 40px, 100% 100%;
+    animation: gradeMovimento 20s linear infinite;
+}
+
+.fundo-cyber::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 249, 0.04) 2px,
+        rgba(0, 255, 249, 0.04) 4px
+    );
+    animation: varredura 4s linear infinite;
+}
+
+.particulas {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+.particula {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: var(--cor-primaria);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--cor-primaria);
+    animation: flutuar 8s linear infinite;
+}
+
+/* ==== CONTEÚDO PRINCIPAL ==== */
+.perfil {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 3px solid var(--cor-primaria);
+    box-shadow: 
+        0 0 20px var(--cor-primaria),
+        inset 0 0 20px rgba(0,255,249,0.3),
+        0 0 40px var(--cor-secundaria);
+    margin-bottom: 18px;
+    object-fit: cover;
+    animation: brilhoPulsante 2s ease-in-out infinite alternate;
+}
+
+h1 {
+    font-size: 28px;
+    color: var(--cor-primaria);
+    text-shadow: 0 0 10px var(--cor-primaria), 0 0 25px var(--cor-primaria);
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+}
+
+.tagline {
+    color: var(--cor-secundaria);
+    font-size: 14px;
+    letter-spacing: 2px;
+    opacity: 0.9;
+}
+
+.linha-divisoria {
+    width: 220px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--cor-primaria), var(--cor-secundaria), transparent);
+    margin: 25px auto;
+    box-shadow: 0 0 10px var(--cor-primaria);
+}
+
+/* ==== CONTAINER DE LINKS ==== */
+.container-links {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ==== BOTÃO COM MENU SUSPENSO ==== */
+.grupo-botao {
+    display: flex;
+    flex-direction: column;
+}
+
+.botao-principal {
+    position: relative;
+    padding: 16px 20px;
+    background: var(--cor-caixa);
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 1.5px;
+    border: 2px solid var(--cor-borda);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.botao-principal .seta {
+    transition: transform 0.3s ease;
+}
+
+.botao-principal.aberto .seta {
+    transform: rotate(180deg);
+}
+
+.botao-principal:hover {
+    transform: translateY(-2px);
+    border-color: var(--cor-secundaria);
+    box-shadow: 0 0 15px var(--cor-secundaria), inset 0 0 25px rgba(255,0,200,0.15);
+    color: var(--cor-destaque);
+}
+
+/* ==== MENU SUSPENSO ==== */
+.menu-suspenso {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.3s ease;
+    background: rgba(5, 5, 15, 0.8);
+    border-left: 2px solid var(--cor-primaria);
+    border-right: 2px solid var(--cor-primaria);
+    border-bottom: 2px solid var(--cor-primaria);
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.menu-suspenso.aberto {
+    max-height: 400px;
+    padding: 10px 0;
+}
+
+.menu-suspenso a {
+    display: block;
+    padding: 12px 25px;
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.menu-suspenso a:hover {
+    color: var(--cor-primaria);
+    background: rgba(0, 255, 249, 0.08);
+    border-left-color: var(--cor-primaria);
+    padding-left: 30px;
+}
+
+/* ==== VIDEO YOUTUBE ==== */
+.rotulo-video {
+    text-align: center;
+    color: var(--cor-destaque);
+    font-size: 13px;
+    margin: 18px 0 8px;
+    letter-spacing: 2px;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    border: 2px solid var(--cor-primaria);
+    border-radius: 4px;
+    box-shadow: 0 0 18px rgba(0,255,249,0.35);
+    overflow: hidden;
+    background: rgba(0,0,0,0.6);
+}
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* ==== FORMULÁRIO DE CONTATO ==== */
+.secao-contato {
+    margin-top: 25px;
+    padding: 20px;
+    border: 2px solid var(--cor-secundaria);
+    border-radius: 6px;
+    background: rgba(10, 8, 24, 0.85);
+    box-shadow: 0 0 20px rgba(255,0,200,0.25);
+}
+
+.secao-contato h2 {
+    text-align: center;
+    color: var(--cor-secundaria);
+    font-size: 18px;
+    margin-bottom: 18px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 8px var(--cor-secundaria);
+}
+
+.grupo-input {
+    margin-bottom: 15px;
+}
+
+.grupo-input label {
+    display: block;
+    font-size: 13px;
+    color: var(--cor-primaria);
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+}
+
+.grupo-input input,
+.grupo-input textarea {
+    width: 100%;
+    padding: 12px;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid var(--cor-borda);
+    border-radius: 3px;
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.grupo-input input:focus,
+.grupo-input textarea:focus {
+    border-color: var(--cor-secundaria);
+    box-shadow: 0 0 10px rgba(255,0,200,0.4);
+}
+
+.grupo-input textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.botao-enviar {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(90deg, var(--cor-primaria), var(--cor-secundaria));
+    color: #000;
+    border: none;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    margin-top: 5px;
+}
+
+.botao-enviar:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px var(--cor-secundaria);
+}
+
+.mensagem-status {
+    margin-top: 12px;
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: 1px;
+    height: 20px;
+}
+
+.sucesso { color: #00ff88; }
+.erro { color: #ff4444; }
+
+/* ==== ANIMAÇÕES ==== */
+@keyframes gradeMovimento {
+    0% { background-position: 0 0; }
+    100% { background-position: 40px 40px; }
+}
+@keyframes varredura {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+@keyframes brilhoPulsante {
+    0% { box-shadow: 0 0 20px var(--cor-primaria), inset 0 0 20px rgba(0,255,249,0.3), 0 0 40px var(--cor-secundaria); }
+    100% { box-shadow: 0 0 30px var(--cor-primaria), inset 0 0 25px rgba(0,255,249,0.4), 0 0 60px var(--cor-secundaria); }
+}
+@keyframes flutuar {
+    0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-10vh) translateX(30px); opacity: 0; }
+}
+
+.rodape {
+    margin-top: 40px;
+    font-size: 12px;
+    color: rgba(0,255,249,0.4);
+    letter-spacing: 2px;
+}

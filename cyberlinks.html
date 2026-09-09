@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBER::LINKS | Linktree Cyberpunk</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <!-- Fundo Animado -->
+    <div class="fundo-cyber"></div>
+    <div class="particulas" id="particulas"></div>
+
+    <!-- Perfil -->
+    <div class="perfil">
+        <img src="https://via.placeholder.com/200/050508/00fff9?text=CYBER" alt="Avatar" class="avatar">
+        <h1>CYBER::MauricioZavarcce</h1>
+        <p class="tagline">SISTEMA ONLINE — CONEXÃO ESTABELECIDA</p>
+        <div class="linha-divisoria"></div>
+    </div>
+
+    <!-- Lista de Links com Menus -->
+    <div class="container-links">
+
+        <!-- Botão 1 -->
+        <div class="grupo-botao">
+            <button class="botao-principal" onclick="alternarMenu(this)">
+                <span>🔹 PERFIL</span>
+                <span class="seta">▼</span>
+            </button>
+            <div class="menu-suspenso">
+                <a href="#">📄 Sobre Mim</a>
+                <a href="#">💼 Experiência</a>
+                <a href="#">🎓 Formação</a>
+            </div>
+        </div>
+
+        <!-- Botão 2 -->
+        <div class="grupo-botao">
+            <button class="botao-principal" onclick="alternarMenu(this)">
+                <span>🔹 PROJETOS</span>
+                <span class="seta">▼</span>
+            </button>
+            <div class="menu-suspenso">
+                <a href="#">💻 GitHub / Códigos</a>
+                <a href="#">🎨 Portfólio Criativo</a>
+                <a href="#">🎵 Produções Musicais</a>
+            </div>
+        </div>
+
+        <!-- Botão 3 -->
+        <div class="grupo-botao">
+            <button class="botao-principal" onclick="alternarMenu(this)">
+                <span>🔹 REDES SOCIAIS</span>
+                <span class="seta">▼</span>
+            </button>
+            <div class="menu-suspenso">
+                <a href="#">📸 Instagram</a>
+                <a href="#">🐦 Twitter / X</a>
+                <a href="#">💬 Discord</a>
+                <a href="#">🎮 Twitch</a>
+            </div>
+        </div>
+
+        <!-- Botão 4 -->
+        <div class="grupo-botao">
+            <button class="botao-principal" onclick="alternarMenu(this)">
+                <span>🔹 MÍDIA</span>
+                <span class="seta">▼</span>
+            </button>
+            <div class="menu-suspenso">
+                <a href="#">🎧 Spotify</a>
+                <a href="#">📺 YouTube</a>
+                <a href="#">📁 Downloads</a>
+            </div>
+        </div>
+
+        <!-- Video do YouTube -->
+        <p class="rotulo-video">▶ VIDEO DESTAQUE</p>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Vídeo YouTube" allowfullscreen></iframe>
+        </div>
+
+                <!-- Formulário de Contato Integrado com Formspree -->
+        <div class="secao-contato">
+            <h2>✉ ENVIAR MENSAGEM</h2>
+            <form action="https://formspree.io/f/xrpgojkp" method="POST" id="formContato">
+                <div class="grupo-input">
+                    <label for="nome">>> NOME</label>
+                    <input type="text" id="nome" name="nome" required placeholder="Digite seu nome...">
+                </div>
+                <div class="grupo-input">
+                    <label for="email">>> E-MAIL</label>
+                    <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                </div>
+                <div class="grupo-input">
+                    <label for="mensagem">>> MENSAGEM</label>
+                    <textarea id="mensagem" name="mensagem" required placeholder="Escreva sua mensagem..."></textarea>
+                </div>
+                <button type="submit" class="botao-enviar">>>> ENVIAR</button>
+                <div class="mensagem-status" id="statusMsg"></div>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="rodape">
+        CYBER::LINKS v2.0 // ZAVARCCE SYSTEM ONLINE 
+    </div>
+
+    <script src="./scripts.js"></script>
+</body>
+</html>
